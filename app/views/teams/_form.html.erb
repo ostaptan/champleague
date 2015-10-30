@@ -1,0 +1,67 @@
+<%= form_for @team, :html => { :class => "form-horizontal team" } do |f| %>
+
+    <% if @team.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @team.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <div class='col-md-2'>
+    <div class="control-group">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+      <%= error_span(@team[:name]) %>
+    </div>
+    <div class="control-group">
+      <%= f.label :points, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :points, :class => 'form-control' %>
+      </div>
+      <%= error_span(@team[:points]) %>
+    </div>
+    <div class="control-group">
+      <%= f.label :won, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :won, :class => 'form-control' %>
+      </div>
+      <%= error_span(@team[:won]) %>
+    </div>
+    <div class="control-group">
+      <%= f.label :lost, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :lost, :class => 'form-control' %>
+      </div>
+      <%= error_span(@team[:lost]) %>
+    </div>
+    <div class="control-group">
+      <%= f.label :draw, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :draw, :class => 'form-control' %>
+      </div>
+      <%= error_span(@team[:draw]) %>
+    </div>
+    <div class="control-group">
+      <%= f.label :goal_diff, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :goal_diff, :class => 'form-control' %>
+      </div>
+      <%= error_span(@team[:goal_diff]) %>
+    </div>
+  </div>
+
+  <div class='col-md-4'>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            teams_path, :class => 'btn btn-default' %>
+  </div>
+<% end %>

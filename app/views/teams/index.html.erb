@@ -1,0 +1,53 @@
+<%- model_class = Team -%>
+<div class='col-md-12'>
+  <div class="page-header">
+    <h1><%=t '.title', :default => 'League Table' %></h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:name) %></th>
+        <th><%= model_class.human_attribute_name(:points) %></th>
+        <th>Played</th>
+        <th><%= model_class.human_attribute_name(:won) %></th>
+        <th><%= model_class.human_attribute_name(:lost) %></th>
+        <th><%= model_class.human_attribute_name(:draw) %></th>
+        <th><%= model_class.human_attribute_name(:goal_diff) %></th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= team.name.capitalize %></td>
+          <td id="points_<%= team.id %>"><%= team.points %></td>
+          <td id="played_<%= team.id %>"><%= played(team) %></td>
+          <td id="won_<%= team.id %>"><%= team.won %></td>
+          <td id="lost_<%= team.id %>"><%= team.lost %></td>
+          <td id="draw_<%= team.id %>"><%= team.draw %></td>
+          <td id="goal_diff_<%= team.id %>"><%= team.goal_diff %></td>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_team_path(team), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        team_path(team),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_team_path, :class => 'btn btn-primary' %>
+  <%= link_to t('.play_all'), '#!', class: 'btn btn-success play_all', onclick: 'play_all_matches(this)' %>
+  <%= link_to t('.next_week'), '#!', class: 'btn btn-primary pull-right play_match', onclick: 'play_match(this)' %>
+  <%= link_to t('.reset_stats'), reset_stats_teams_path, class: 'btn btn-danger pull-right reset_stats' %>
+</div>
+
+<div id="edit_match" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<%#= render 'matches/edit_modal' %>
+<%= render 'matches/results' %>
+<%= render 'matches/predictions' %>

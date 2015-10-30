@@ -9,7 +9,6 @@ function drawMatchPredictions(data) {
   var predicts_table = $("#predictions_table");
   predicts_table.append(weekRow);
   weekRow.append($("<td> <b>Week No " + (data.results[0][0].week + 1) + "</b></td>"));
-  console.log(data.predicts)
 
   $.each(data.predicts, function(key, value) {
     var row = $("<tr />");
@@ -51,7 +50,6 @@ function drawRow(rowData) {
       type: 'put'
     },
     success: function(response, newValue) {
-      console.log(newValue)
       updateTeamsStats();
     },
   });

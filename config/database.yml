@@ -21,9 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   pool: 5
   timeout: 5000
-  database: heroku_c0e515d081c20ac
-  user: b5acdf0db83222
-  password: eb8d7cf8
+  host: ec2-54-228-180-92.eu-west-1.compute.amazonaws.com
+  database: d71gq0kdhnvbji
+  user: fwlxukhcktvreq
+  password: HwtB_jABZVOGLytYMGYo3kFX0O
+  port: 5432

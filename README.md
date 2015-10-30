@@ -7,8 +7,8 @@ Setting up to Run Champleague
 ~/ $ cd champ_league/
 ~ champ_league $ bundle install
 
-2) Set secret data
-~ champ_league $ cp config/secrets.yml.template config/secrets.yml
+2) Set database data
+~ champ_league $ cp config/database.yml.template config/database.yml
 
 3) Setup DB
 ~ champ_league $ bin/rake db:create

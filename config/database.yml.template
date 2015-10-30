@@ -25,8 +25,8 @@ production:
   pool: 10
   timeout: 5000
   encoding: UTF8
-  host: <%= Rails.application.secrets[:database][:host] %>
-  database: <%= Rails.application.secrets[:database][:name] %>
-  user: <%= Rails.application.secrets[:database][:user] %>
-  password: <%= Rails.application.secrets[:database][:pwd] %>
-  port: <%= Rails.application.secrets[:database][:port] %>
+  host: <%= ENV["DB_HOST"] %>
+  database: <%= ENV["DB_NAME"] %>
+  user: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PWD"] %>
+  port: <%= ENV["DB_PORT"] %>

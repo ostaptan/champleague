@@ -1,7 +1,7 @@
-# champleague app
-
-Setting up to Run Champleague
+champleague app
 ==============================================================================
+
+### Setting up to Run Champleague
 
 1) Install gems
 ~/ $ cd champ_league/
@@ -23,5 +23,6 @@ Setting up to Run Champleague
 6) Add few football teams via UI
 
 7) Enjoy!
+
 ==============================================================================
 

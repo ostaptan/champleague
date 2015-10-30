@@ -2,6 +2,7 @@ class Team < ActiveRecord::Base
   has_and_belongs_to_many :matches
 
   validates_presence_of :name, :points
+  validates :points, :won, :lost, :draw, :numericality => { :greater_than_or_equal_to => 0 }
 
   WIN = 3
   DRAW = 1
